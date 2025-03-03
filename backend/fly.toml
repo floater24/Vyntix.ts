@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for vyntix-ts on 2025-03-02T20:43:55+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+app = "vyntix-ts"
+primary_region = "ord"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false  # ✅ これを無効にする
+  auto_start_machines = true
+  min_machines_running = 1  # ✅ 最低1つは常に起動
+  processes = ["app"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
