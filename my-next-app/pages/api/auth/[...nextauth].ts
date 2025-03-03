@@ -8,13 +8,13 @@ import { db } from "../../../../backend/src/db/client";
 export const authOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
     }),
   ],
   adapter: DrizzleAdapter(db),
   session: { strategy: "jwt" as SessionStrategy }, // ← ここで型を明示！
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET ?? "",
 };
 
 export default NextAuth(authOptions);
