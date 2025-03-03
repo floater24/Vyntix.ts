@@ -1,17 +1,20 @@
 "use client";
 
-import { trpc } from "../../backend/lib/trpc";
+import { signIn, signOut, useSession } from "next-auth/react";
 
-export default function Page() {
-  const auth = trpc.auth.me.useQuery();
+export default function Home() {
+  const { data: session } = useSession();
 
   return (
     <div>
-      <h1>Welcome to the Fullstack Bun Framework!</h1>
-      {auth.data ? (
-        <p>Logged in as: {auth.data.email}</p>
+      <h1>Welcome to Vyntix.ts</h1>
+      {session ? (
+        <div>
+          <p>Logged in as: {session.user?.email}</p>
+          <button onClick={() => signOut()}>Sign Out</button>
+        </div>
       ) : (
-        <p>Not logged in</p>
+        <button onClick={() => signIn("github")}>Sign in with GitHub</button>
       )}
     </div>
   );
