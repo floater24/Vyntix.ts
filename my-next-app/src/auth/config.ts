@@ -18,6 +18,6 @@ export const getAuthOptions = (): AuthOptions => ({
     }),
   ],
   adapter: DrizzleAdapter(db),
-  session: { strategy: "jwt" as SessionStrategy },
+  session: { strategy: "database" as SessionStrategy },
   secret: getEnvVar("NEXTAUTH_SECRET"),
 });
