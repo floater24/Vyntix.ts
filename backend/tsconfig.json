@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@backend/*": ["./backend/*"]  // ✅ backend/ へのエイリアス
+    },
+
     // Enable latest features
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",

@@ -13,16 +13,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@backend/*": ["../../backend/src/*"],
-      "@auth/drizzle-adapter": ["../backend/node_modules/@auth/drizzle-adapter"]
+      "@/*": ["src/*"],
+      "@backend/*": ["backend/src/*"],
+      "@auth/drizzle-adapter": ["backend/node_modules/@auth/drizzle-adapter"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

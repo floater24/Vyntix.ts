@@ -1,0 +1,1 @@
+wget -O public/favicon.ico https://nextjs.org/static/favicon/favicon.ico
