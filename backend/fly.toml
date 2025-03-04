@@ -1,6 +1,4 @@
-# fly.toml app configuration file generated for vyntix-ts on 2025-03-02T20:43:55+09:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+# Fly.io app configuration for Vyntix.ts
 app = "vyntix-ts"
 primary_region = "ord"
 
@@ -8,10 +6,10 @@ primary_region = "ord"
   dockerfile = "Dockerfile"
 
 [env]
-  PORT = "8080"
+  PORT = "3000"  # ✅ Fly.io のポートを Next.js に合わせる
 
 [http_service]
-  internal_port = 8080
+  internal_port = 3000  # ✅ Next.js は 3000 番ポート
   force_https = true
   auto_stop_machines = false  # ✅ これを無効にする
   auto_start_machines = true
