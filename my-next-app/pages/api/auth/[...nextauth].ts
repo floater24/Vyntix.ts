@@ -8,7 +8,7 @@ export default function authHandler(req: NextApiRequest, res: NextApiResponse) {
   return NextAuth(req, res, {
     ...getAuthOptions(),
     pages: {
-      signIn: "/auth/signin",
+      signIn: "/auth/signIn",
       error: "/auth/error",
     },
   });
