@@ -30,7 +30,7 @@ export default function Home() {
           <button onClick={() => signOut()}>Sign Out</button>
         </>
       ) : (
-        <button onClick={() => signIn("github", { callbackUrl: "https://vyntix-ts.fly.dev" })}>
+        <button onClick={() => signIn("github", { callbackUrl: "https://vyntix-ts.fly.dev/api/auth/signin" })}>
   Sign In with GitHub
 </button>
 
