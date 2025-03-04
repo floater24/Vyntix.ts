@@ -1,8 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import NextAuth, { AuthOptions, SessionStrategy } from "next-auth";
+import { PgDatabase } from "drizzle-orm/pg-core";
+import  { AuthOptions, SessionStrategy } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { DrizzleAdapter } from "@auth/drizzle-adapter"; // ✅ `require()` をやめて `import` を使う！
+
 import { db } from "./db/client"; // ← バックエンド用DBを正しく参照！
+import * as schema from "./db/schema"; // Drizzle 用のスキーマを使用
+
  
 const getEnvVar = (key: string): string => {
   const value = process.env[key];
@@ -17,8 +20,11 @@ export const getAuthOptions = (): AuthOptions => ({
       clientSecret: getEnvVar("GITHUB_SECRET"),
     }),
   ],
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db as unknown as PgDatabase<never, typeof schema>),
   session: { strategy: "database" as SessionStrategy },
   secret: getEnvVar("NEXTAUTH_SECRET"),
-  
+  pages: {
+    signIn: "/auth/signin",  // ✅ ここを `/api/auth/signin` ではなく `/auth/signin` に！
+    error: "/auth/error", 
+  },
 });

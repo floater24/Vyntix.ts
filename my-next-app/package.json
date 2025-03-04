@@ -2,11 +2,11 @@
   "name": "my-next-app",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "dev": "cross-env NODE_ENV=development DATABASE_URL=postgresql://Authentic_owner:npg_V4DagknITzi8@ep-flat-sound-a5tvoy2t-pooler.us-east-2.aws.neon.tech/Authentic?sslmode=require next dev",
-  "build": "cross-env NODE_ENV=production next build",
-  "start": "cross-env NODE_ENV=production next start"
-},
+  "scripts": {
+    "dev": "DATABASE_URL=postgresql://Authentic_owner:npg_V4DagknITzi8@ep-flat-sound-a5tvoy2t-pooler.us-east-2.aws.neon.tech/Authentic?sslmode=require next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.8.0",
     "@neondatabase/serverless": "^0.10.4",
@@ -16,19 +16,18 @@
     "@trpc/server": "^10.45.2",
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.5",
-    "drizzle-orm": "^0.40.0",
     "next": "15.2.0",
     "next-auth": "^4.24.11",
     "pg": "^8.13.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/dotenv": "^6.1.1",
     "@types/node": "^20",
-    "@types/react": "^19",
+    "@types/react": "19.0.10",
     "@types/react-dom": "^19",
     "cross-env": "^7.0.3",
     "eslint": "^9",

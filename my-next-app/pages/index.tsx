@@ -20,7 +20,7 @@ export default function Home() {
         .then((res) => res.json())
         .then((data: User[]) => setUsers(data));
     }
-  }, [session]);
+  }, [session,status]);
   if (status === "loading") return <p>Loading...</p>; // ✅ ローディング中のUIを追加！
 
   return (
