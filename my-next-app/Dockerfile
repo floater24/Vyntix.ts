@@ -10,18 +10,21 @@ RUN apk add --no-cache git bash
 COPY package.json package-lock.json ./
 RUN npm install
 
-# ✅ 4. アプリのソースコードをコピー（これを `npm install` の後にすることでキャッシュを最適化）
+# ✅ 4. `backend/` も含めてコピー（trpcのため）
+COPY ../backend /app/backend
+
+# ✅ 5. アプリのソースコードをコピー（これを `npm install` の後にすることでキャッシュを最適化）
 COPY . .
 
-# ✅ 5. Next.js をビルド（`WORKDIR` は `/app` のままで OK）
+# ✅ 6. Next.js をビルド（`WORKDIR` は `/app` のままで OK）
 RUN npm run build
 
-# ✅ 6. `runner` イメージを作成して、`builder` からビルド済みの成果物をコピー
+# ✅ 7. `runner` イメージを作成して、`builder` からビルド済みの成果物をコピー
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-# ✅ 7. `builder` から `/app` の内容をコピー（Next.js のビルド成果物も含む）
+# ✅ 8. `builder` から `/app` の内容をコピー（Next.js のビルド成果物も含む）
 COPY --from=builder /app /app
 
-# ✅ 8. `npm start` でサーバー起動
+# ✅ 9. `npm start` でサーバー起動
 CMD ["npm", "run", "start"]

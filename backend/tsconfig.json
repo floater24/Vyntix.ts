@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@backend/*": ["./backend/*"]  // ✅ backend/ へのエイリアス
+      "@backend/*": ["../backend/src/*"]  // ✅ backend/ へのエイリアス
     },
 
     // Enable latest features
