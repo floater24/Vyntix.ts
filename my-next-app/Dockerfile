@@ -9,7 +9,7 @@ RUN apk add --no-cache git bash
 
 # ✅ package.json をコピーして依存関係をインストール
 COPY package.json package-lock.json ./
-WORKDIR /app
+WORKDIR /app/my-next-app
 RUN npm install
 RUN npm run build
 
