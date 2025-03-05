@@ -28,6 +28,6 @@
       "@auth/drizzle-adapter": ["backend/node_modules/@auth/drizzle-adapter"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../backend/src/trpc.ts"],
   "exclude": ["node_modules"]
 }
