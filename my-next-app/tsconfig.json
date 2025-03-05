@@ -21,8 +21,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@backend/*": ["backend/src/*"],
+      "@/*": ["./src/*"],
+      "@backend/*": ["../backend/src/*"] ,
       "@auth/drizzle-adapter": ["backend/node_modules/@auth/drizzle-adapter"]
     }
   },

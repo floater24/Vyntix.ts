@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "DATABASE_URL=postgresql://Authentic_owner:npg_V4DagknITzi8@ep-flat-sound-a5tvoy2t-pooler.us-east-2.aws.neon.tech/Authentic?sslmode=require next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -14,9 +14,11 @@
     "@trpc/client": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "@types/pg": "^8.11.11",
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.5",
-    "next": "15.2.0",
+    "drizzle-orm": "^0.40.0",
+    "next": "^15.2.1",
     "next-auth": "^4.24.11",
     "pg": "^8.13.3",
     "react": "^18.3.1",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@flydotio/dockerfile": "^0.7.8",
     "@tailwindcss/postcss": "^4",
     "@types/dotenv": "^6.1.1",
     "@types/node": "^20",

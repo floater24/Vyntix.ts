@@ -1,5 +1,5 @@
 import type { inferAsyncReturnType } from "@trpc/server";
-import { publicProcedure, router } from "./trpc";
+import { publicProcedure, router } from "../trpc";
 import { z } from "zod";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { createId } from "@paralleldrive/cuid2";
