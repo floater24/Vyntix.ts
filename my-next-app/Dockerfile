@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 # ✅ 4. `backend/` も含めてコピー（trpcのため）
-COPY ./backend /app/backend
+COPY backend /app/backend  
 
 # ✅ 5. アプリのソースコードをコピー（これを `npm install` の後にすることでキャッシュを最適化）
 COPY . .
