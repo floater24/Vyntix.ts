@@ -1,27 +1,27 @@
-# ✅ `node` イメージを使うことで `npm` を確実にインストール
+# ✅ 1. `node` ベースの `builder` イメージを作成
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-
-# ✅ 必要なパッケージをインストール
+# ✅ 2. 依存関係をインストール
 RUN apk add --no-cache git bash
 
-# ✅ package.json をコピーして依存関係をインストール
+# ✅ 3. `package.json` と `package-lock.json` をコピーして `npm install`
 COPY package.json package-lock.json ./
-WORKDIR /app/my-next-app
 RUN npm install
-RUN npm run build
 
-# ✅ アプリのソースコードをコピー
+# ✅ 4. アプリのソースコードをコピー（これを `npm install` の後にすることでキャッシュを最適化）
 COPY . .
 
-# ✅ Next.js をビルド
+# ✅ 5. Next.js をビルド（`WORKDIR` は `/app` のままで OK）
+RUN npm run build
 
-
-# ✅ 実行環境を設定
+# ✅ 6. `runner` イメージを作成して、`builder` からビルド済みの成果物をコピー
 FROM node:18-alpine AS runner
 WORKDIR /app
+
+# ✅ 7. `builder` から `/app` の内容をコピー（Next.js のビルド成果物も含む）
 COPY --from=builder /app /app
 
+# ✅ 8. `npm start` でサーバー起動
 CMD ["npm", "run", "start"]
