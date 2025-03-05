@@ -1,13 +1,10 @@
-import type { inferAsyncReturnType } from "@trpc/server";
-import { publicProcedure, router } from "../trpc";
+import { publicProcedure, router } from "../trpc/trpc";
 import { z } from "zod";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { createId } from "@paralleldrive/cuid2";
-import { db } from "../db/client";
+import { db } from "../auth/db/client";
 import { authOptions } from "../auth/config";
 import { getServerSession } from "next-auth/next";
-import type { users } from "../db/schema"; // Drizzleの型をインポート
-import { eq } from "drizzle-orm";
+
 
 export const authRouter = router({
   login: publicProcedure
@@ -24,8 +21,8 @@ export const authRouter = router({
       return { sessionToken: createId() };
     }),
 
-  me: publicProcedure.query(async ({ ctx }) => {
-    const session = await getServerSession(authOptions);
+  me: publicProcedure.query(async () => {
+    const session = await getServerSession(authOptions());
     return session?.user ?? null;
   }),
 });

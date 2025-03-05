@@ -13,3 +13,5 @@ export const appRouter = t.router({  // ✅ `router` から `appRouter` に変�
 // 🚀 型を `appRouter` に統一
 export type AppRouter = typeof appRouter;
 
+export const router = t.router; // ✅ これがあるかチェック！
+export const publicProcedure = t.procedure; // ✅ これがあるかチェック！

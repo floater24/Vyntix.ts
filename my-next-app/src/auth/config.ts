@@ -13,7 +13,7 @@ const getEnvVar = (key: string): string => {
   return value;
 };
 
-export const getAuthOptions = (): AuthOptions => ({
+export const authOptions = (): AuthOptions => ({
   providers: [
     GitHubProvider({
       clientId: getEnvVar("GITHUB_ID"),
