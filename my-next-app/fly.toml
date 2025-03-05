@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for my-next-app-long-sea-8502 on 2025-03-05T09:08:05+09:00
+# fly.toml app configuration file generated for typheoon-ts on 2025-03-05T14:50:56+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'my-next-app-long-sea-8502'
+app = 'typheoon-ts'
 primary_region = 'nrt'
 
 [build]
